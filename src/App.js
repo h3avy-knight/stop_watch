@@ -8,19 +8,6 @@ const App = () => {
   const [time, setTime] = useState(0);
   const [timerOn, setTimerOn] = useState(false);
 
-  let timer;
-
-  // useEffect(() => {
-  //   timer = setInterval(() => {
-  //     setSeconds(seconds + 1);
-  //     if (seconds === 59) {
-  //       setMinuts(minuts + 1);
-  //       setSeconds(0);
-  //     }
-  //   }, 100);
-  //   return () => clearInterval(timer);
-  // });
-
   useEffect(() => {
     let interval = null;
     if (timerOn) {
@@ -34,21 +21,6 @@ const App = () => {
     return () => clearInterval(interval);
   });
 
-  const start = () => {};
-
-  const reStart = () => {
-    setMinuts(0);
-    setSeconds(0);
-  };
-
-  const stop = () => {
-    clearInterval(timer);
-  };
-
-  const resume = () => {
-    setInterval(timer);
-  };
-
   return (
     <div className="App">
       <header className="App-header">
@@ -59,10 +31,6 @@ const App = () => {
           <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
           <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
         </p>
-        {/* <p>
-          {minuts < 10 ? `0${minuts}` : minuts}:
-          {seconds < 10 ? `0${seconds}` : seconds}
-        </p> */}
         <div
           className="btn-group d-flex justify-content-around"
           role="group"
